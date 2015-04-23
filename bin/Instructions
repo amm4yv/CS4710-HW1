@@ -1,0 +1,50 @@
+Scott Mallory sam4ku
+Allison Moyer amm4yv
+
+How to compile: use the makefile - command "make"
+How to execute: command "java HW1"
+	- Any invalid command will terminate the program
+
+Why reasoning:
+Our why will output I KNOW THAT fact if it the variable is a base node, that is, if it is not a consequence of any given rule. Therefore, for variables that are consequences of rules, if it cannot be proven given the current state of the system, then it is false (it does not consider the fact base). This is in conjunction with the expected behavior discussed on piazza and in class (for a given variable and system state, QUERY could output true while WHY outputs false).
+
+Sample I/O:
+Input:
+Teach isClassCancelled = "AI is cancelled tomorrow"
+Teach S = "It is snowing"
+Teach VA = "We're in Virginia"
+Teach F = "Floryan is cool"
+Teach (S&VA&F) -> isClassCancelled
+Teach S = true
+Teach VA = true
+Teach F = true
+Why isClassCancelled
+
+Output:
+true
+I KNOW THAT It is snowing
+I KNOW THAT We're in Virginia
+I THUS KNOW THAT It is snowing AND We're in Virginia
+I KNOW THAT Floryan is cool
+I THUS KNOW THAT (It is snowing AND We're in Virginia AND Floryan is cool)
+BECAUSE (It is snowing AND We're in Virginia AND Floryan is cool) I KNOW THAT AI is cancelled tomorrow
+
+----------
+
+Input:
+Teach A = "Allison likes CS"
+Teach B = "Allison is a CS major"
+Teach A -> B
+Teach A = true
+Learn
+List
+
+Output:
+Variables:
+	A = "Allison likes CS"
+	B = "Allison is a CS major"
+Facts:
+	A
+	B
+Rules
+	A -> B
